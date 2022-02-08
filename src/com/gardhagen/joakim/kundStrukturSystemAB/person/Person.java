@@ -1,10 +1,10 @@
 package com.gardhagen.joakim.kundStrukturSystemAB.person;
 
 public class Person {
-	int id;
-	String forName;
-	String lastName;
-	String Adress;
+	protected int id;
+	protected String forName;
+	protected String lastName;
+	protected String Adress;
 	
 	public Person(int id, String forName, String lastName, String adress) {
 		super();
