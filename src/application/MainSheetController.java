@@ -14,6 +14,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -33,7 +34,13 @@ public class MainSheetController implements Initializable{
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 	ObservableList<Customer> customers = FXCollections.observableArrayList(CustemerList);
-
+	
+	@FXML
+	void Select(ActionEvent event) {
+		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
+		SellerInfo.setText(s);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //		selectSeller.setItems(listA);
