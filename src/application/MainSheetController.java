@@ -3,9 +3,12 @@ package application;
 
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +25,9 @@ public class MainSheetController implements Initializable{
 	@FXML
 	Label SellerInfo,CustomerInfo;
 	Customer cust = new Customer(0,"Joakim","Gårdhagen","Skeppartorpsvägen 14");
-	ObservableList<Customer> listA = FXCollections.observableArrayList(cust);
+	List <Customer> CustemerList = new ArrayList<>();
+	FillCustomerFromFile FFF = new FillCustomerFromFile(CustemerList);
+	ObservableList<Customer> listA = FXCollections.observableArrayList(CustemerList);
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

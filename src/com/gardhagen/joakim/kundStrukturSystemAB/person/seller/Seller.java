@@ -6,7 +6,7 @@ public class Seller extends Person {
 	
 	@Override
 	public String toString() {
-		return "[id=" + id + ", forName=" + forName + ", lastName=" + lastName + ", Adress=" + Adress + "]";
+		return "[id=" + id + ", " + forName + ", " + lastName + ", " + Adress + "]";
 	}
 	public Seller(int id, String forName, String lastName, String adress) {
 		super(id, forName, lastName, adress);
