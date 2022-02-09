@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,20 +21,24 @@ import javafx.scene.control.Label;
 
 public class MainSheetController implements Initializable{
 	@FXML
-	ComboBox<Customer> selectSeller;
+	ComboBox<Seller> selectSeller;
 	@FXML
 	ComboBox<Customer> selectCustomer;
 	@FXML
 	Label SellerInfo,CustomerInfo;
-	Customer cust = new Customer(0,"Joakim","Gårdhagen","Skeppartorpsvägen 14");
+	
 	List <Customer> CustemerList = new ArrayList<>();
-	FillCustomerFromFile FFF = new FillCustomerFromFile(CustemerList);
-	ObservableList<Customer> listA = FXCollections.observableArrayList(CustemerList);
+	List <Seller> SellerList = new ArrayList<>();
+	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
+	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
+	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
+	ObservableList<Customer> customers = FXCollections.observableArrayList(CustemerList);
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //		selectSeller.setItems(listA);
-		selectCustomer.setItems(listA);
+		selectSeller.setItems(sellers);
+		selectCustomer.setItems(customers);
 	}
 	
 }

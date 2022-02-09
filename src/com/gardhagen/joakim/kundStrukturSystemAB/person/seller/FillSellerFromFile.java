@@ -1,13 +1,13 @@
-package com.gardhagen.joakim.kundStrukturSystemAB.person.customer;
+package com.gardhagen.joakim.kundStrukturSystemAB.person.seller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class FillCustomerFromFile {
-	String filePath = "Customers.txt";
-	public FillCustomerFromFile(List<Customer> custemerList) {
+public class FillSellerFromFile {
+	String filePath = "StaffMember.txt";
+	public FillSellerFromFile(List<Seller> sellerList) {
 		try(BufferedReader fReader = new BufferedReader(new FileReader(filePath))){
 			String line;
 			while((line = fReader.readLine())!=null) {
@@ -18,8 +18,8 @@ public class FillCustomerFromFile {
 				String adresspart2 = split[3];
 				String adress = adresspart1 +" "+ adresspart2;
 				
-				Customer customer = new Customer(0, fName, lName, adress );
-				custemerList.add(customer);
+				Seller seller = new Seller(0, fName, lName, adress );
+				sellerList.add(seller);
 				
 			}
 		
@@ -28,5 +28,4 @@ public class FillCustomerFromFile {
 			e.printStackTrace();
 		}
 	}
-	
 }
