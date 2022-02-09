@@ -4,6 +4,8 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -44,6 +46,7 @@ public class MainSheetController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //		selectSeller.setItems(listA);
+		Collections.shuffle(customers);
 		selectSeller.setItems(sellers);
 		selectCustomer.setItems(customers);
 	}
