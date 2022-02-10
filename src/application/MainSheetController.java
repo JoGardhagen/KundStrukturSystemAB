@@ -4,13 +4,13 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
 
 import javafx.collections.FXCollections;
@@ -32,22 +32,31 @@ public class MainSheetController implements Initializable{
 	List <Customer> CustemerList = new ArrayList<>();
 	List <Seller> SellerList = new ArrayList<>();
 	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
+//	FillCustomerFromFile FCFF = new FillCustomerFromFile(SellerList);
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
+	FillSellersCostumerList FSCL=new FillSellersCostumerList(SellerList,CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
-	ObservableList<Customer> customers = FXCollections.observableArrayList(CustemerList);
+	
 	
 	@FXML
 	void Select(ActionEvent event) {
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
 		SellerInfo.setText(s);
+		ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+		selectCustomer.setItems(customers);
 	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		selectSeller.setItems(listA);
-		Collections.shuffle(customers);
+////		selectSeller.setItems(listA);
+//		Collections.shuffle(customers);
 		selectSeller.setItems(sellers);
-		selectCustomer.setItems(customers);
+		
+//		if(selectSeller.equals(SellerList.get(1))) {
+//			selectCustomer.setItems((ObservableList<Customer>) SellerList.get(1).sellersCustomerList);
+//		}
+		
+		
 	}
 	
 }

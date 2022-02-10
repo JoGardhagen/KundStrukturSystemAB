@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FillSellerFromFile {
 	String filePath = "StaffMember.txt";
-	public FillSellerFromFile(List<Seller> sellerList) {
+	public FillSellerFromFile(List<Seller> sellerList ) {
 		try(BufferedReader fReader = new BufferedReader(new FileReader(filePath))){
 			String line;
 			while((line = fReader.readLine())!=null) {
@@ -27,5 +27,6 @@ public class FillSellerFromFile {
 			
 			e.printStackTrace();
 		}
+		
 	}
 }

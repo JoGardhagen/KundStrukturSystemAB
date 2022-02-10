@@ -24,5 +24,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+//		Seller seller = new Seller(0, "Joakim", "Gårdhagen", "Bajs");
+//		System.out.println(seller.sellersCustomer.get(0));
 	}
 }

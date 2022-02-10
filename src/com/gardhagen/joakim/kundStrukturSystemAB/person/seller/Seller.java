@@ -7,7 +7,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.Person;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 
 public class Seller extends Person {
-	List <Customer> sellersCustomer = new ArrayList<>();
+	public List <Customer> sellersCustomerList = new ArrayList<>();
 	@Override
 	public String toString() {
 		return "[id=" + id + ", " + forName + ", " + lastName + ", " + Adress + "]";
@@ -16,6 +16,10 @@ public class Seller extends Person {
 		super(id, forName, lastName, adress);
 		
 	}
+	public void addToSellerCustomerList(Customer customer) {
+		sellersCustomerList.add(customer);
+	}
+	
 
 
 }
