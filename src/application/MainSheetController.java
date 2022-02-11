@@ -55,14 +55,16 @@ public class MainSheetController implements Initializable {
 		try {
 			UnitsIntHandler.getIntFromTextField(units);
 			try {
-				sellingsInformation.setText(units.getText() +" " 
+				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) +" " 
 							+ selectArticle.getSelectionModel().getSelectedItem().toString()
-							+ " Sells to " + customerListView.getSelectionModel().getSelectedItem().toString());
+							+ " Sells to " + customerListView.getSelectionModel().getSelectedItem().toString()
+							+ " for :"+selectArticle.getSelectionModel().getSelectedItem().
+								price*UnitsIntHandler.getIntFromTextField(units)+" SEK:-");
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
 		} catch (Exception e) {
-			sellingsInformation.setText("Put int a Nummber in Units plz");
+			sellingsInformation.setText("Put int a Nummber in Units");
 		}
 
 	}
