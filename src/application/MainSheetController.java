@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class MainSheetController implements Initializable{
 	@FXML
@@ -28,6 +29,8 @@ public class MainSheetController implements Initializable{
 	ComboBox<Customer> selectCustomer;
 	@FXML
 	Label SellerInfo,CustomerInfo;
+	@FXML
+	ListView<Customer>customerListView;
 	
 	List <Customer> CustemerList = new ArrayList<>();
 	List <Seller> SellerList = new ArrayList<>();
@@ -36,27 +39,23 @@ public class MainSheetController implements Initializable{
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
 	FillSellersCostumerList FSCL=new FillSellersCostumerList(SellerList,CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
-	
+//	ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	
 	@FXML
 	void Select(ActionEvent event) {
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
 		SellerInfo.setText(s);
-		ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
-		selectCustomer.setItems(customers);
+		System.out.println(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+//		selectCustomer.setItems(customers);
+		customerListView.getItems().clear();
+		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-////		selectSeller.setItems(listA);
-//		Collections.shuffle(customers);
+
 		selectSeller.setItems(sellers);
-		
-//		if(selectSeller.equals(SellerList.get(1))) {
-//			selectCustomer.setItems((ObservableList<Customer>) SellerList.get(1).sellersCustomerList);
-//		}
-		
-		
+				
 	}
 	
 }

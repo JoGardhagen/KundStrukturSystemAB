@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -12,5 +13,6 @@
       <ComboBox fx:id="selectSeller" layoutX="8.0" layoutY="51.0" onAction="#Select" prefWidth="150.0" promptText="Seller" />
       <ComboBox fx:id="selectCustomer" layoutX="8.0" layoutY="125.0" prefWidth="150.0" promptText="Customer" />
       <Label fx:id="CustomerInfo" alignment="CENTER" layoutX="164.0" layoutY="129.0" prefHeight="17.0" prefWidth="539.0" text="CustomerInfo" />
+      <ListView fx:id="customerListView" layoutX="164.0" layoutY="150.0" prefHeight="401.0" prefWidth="533.0" />
    </children>
 </AnchorPane>
