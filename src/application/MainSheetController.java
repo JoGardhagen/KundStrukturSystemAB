@@ -34,7 +34,7 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
-	Button sellbutton;
+	Button sellbutton,activityListButton;
 	@FXML
 	TextField units;
 
@@ -60,6 +60,7 @@ public class MainSheetController implements Initializable {
 							+ " Sells to " + customerListView.getSelectionModel().getSelectedItem().toString()
 							+ " for :"+selectArticle.getSelectionModel().getSelectedItem().
 								price*UnitsIntHandler.getIntFromTextField(units)+" SEK:-");
+				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -84,6 +85,13 @@ public class MainSheetController implements Initializable {
 		selectSeller.setItems(sellers);// Populerar försäljare till ComboBox för Försäljare
 		selectArticle.setItems(pruducts);
 
+	}
+	@FXML
+	void printActivityList() {
+//		selectSeller.getSelectionModel().getSelectedItem().activityList();
+		selectSeller.getSelectionModel().getSelectedItem().printActivityList();
+			
+		
 	}
 
 }
