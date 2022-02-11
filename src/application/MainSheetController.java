@@ -46,7 +46,6 @@ public class MainSheetController implements Initializable{
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
 		SellerInfo.setText(s);
 		System.out.println(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
-//		selectCustomer.setItems(customers);
 		customerListView.getItems().clear();
 		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	}
@@ -54,7 +53,7 @@ public class MainSheetController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		selectSeller.setItems(sellers);
+		selectSeller.setItems(sellers);// Populerar försäljare till ComboBox för Försäljare
 				
 	}
 	
