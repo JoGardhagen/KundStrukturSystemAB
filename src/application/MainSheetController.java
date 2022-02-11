@@ -22,41 +22,51 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
-public class MainSheetController implements Initializable{
+public class MainSheetController implements Initializable {
 	@FXML
 	ComboBox<Seller> selectSeller;
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo,CustomerInfo,sellingsInformation;
+	Label SellerInfo, CustomerInfo, sellingsInformation;
 	@FXML
-	ListView<Customer>customerListView;
+	ListView<Customer> customerListView;
 	@FXML
 	Button sellbutton;
-	
-	List <Customer> CustemerList = new ArrayList<>();
-	List <Seller> SellerList = new ArrayList<>();
-	List <Article> PruductList = new ArrayList<>();
+	@FXML
+	TextField units;
+
+	List<Customer> CustemerList = new ArrayList<>();
+	List<Seller> SellerList = new ArrayList<>();
+	List<Article> PruductList = new ArrayList<>();
 	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
 	FillPruductList FPL = new FillPruductList(PruductList);
 
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
-	FillSellersCostumerList FSCL=new FillSellersCostumerList(SellerList,CustemerList);
+	FillSellersCostumerList FSCL = new FillSellersCostumerList(SellerList, CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 
 	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
-	
+
 	@FXML
 	void sellToCustomer(ActionEvent event) {
 		try {
-			sellingsInformation.setText(selectArticle.getSelectionModel().getSelectedItem().toString()+" Sells to "+customerListView.getSelectionModel().getSelectedItem().toString());
+			UnitsIntHandler.getIntFromTextField(units);
+			try {
+				sellingsInformation.setText(units.getText() +" " 
+							+ selectArticle.getSelectionModel().getSelectedItem().toString()
+							+ " Sells to " + customerListView.getSelectionModel().getSelectedItem().toString());
+			} catch (Exception e) {
+				sellingsInformation.setText("Not Product or Customer is Chosen");
+			}
 		} catch (Exception e) {
-			sellingsInformation.setText("ingen product eller kund vald");
+			sellingsInformation.setText("Put int a Nummber in Units plz");
 		}
-		
+
 	}
-	
+
 	@FXML
 	void Select(ActionEvent event) {
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
@@ -65,13 +75,13 @@ public class MainSheetController implements Initializable{
 		customerListView.getItems().clear();
 		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		selectSeller.setItems(sellers);// Populerar försäljare till ComboBox för Försäljare
 		selectArticle.setItems(pruducts);
-				
+
 	}
-	
+
 }

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSheetController">
@@ -16,7 +17,9 @@
       <Label fx:id="CustomerInfo" alignment="CENTER" layoutX="164.0" layoutY="129.0" prefHeight="17.0" prefWidth="539.0" text="CustomerInfo" />
       <ListView fx:id="customerListView" layoutX="164.0" layoutY="150.0" prefHeight="401.0" prefWidth="533.0" />
       <Label alignment="CENTER" layoutX="355.0" layoutY="25.0" prefHeight="17.0" prefWidth="157.0" text="Seller Information" />
-      <Button fx:id="sellbutton" layoutX="57.0" layoutY="180.0" mnemonicParsing="false" onAction="#sellToCustomer" text="Sell" />
+      <Button fx:id="sellbutton" layoutX="66.0" layoutY="214.0" mnemonicParsing="false" onAction="#sellToCustomer" text="Sell" />
       <Label fx:id="sellingsInformation" alignment="CENTER" layoutY="561.0" prefHeight="17.0" prefWidth="700.0" text="SellingsInformation" />
+      <TextField fx:id="units" alignment="CENTER" layoutX="9.0" layoutY="181.0" promptText="1" />
+      <Label alignment="CENTER" layoutX="-1.0" layoutY="164.0" prefHeight="17.0" prefWidth="167.0" text="Units" />
    </children>
 </AnchorPane>
