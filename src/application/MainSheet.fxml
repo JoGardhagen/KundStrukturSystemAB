@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSheetController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSheetController">
    <children>
       <Separator layoutY="105.0" prefHeight="20.0" prefWidth="700.0" />
       <Label fx:id="SellerInfo" alignment="CENTER" layoutX="162.0" layoutY="46.0" prefHeight="17.0" prefWidth="539.0" text="SellerInfo" />
-      <ComboBox fx:id="selectSeller" layoutX="8.0" layoutY="51.0" onAction="#Select" prefWidth="150.0" promptText="Seller" />
+      <ComboBox fx:id="selectSeller" layoutX="8.0" layoutY="42.0" onAction="#Select" prefWidth="150.0" promptText="Seller" />
       <ComboBox fx:id="selectArticle" layoutX="8.0" layoutY="125.0" prefWidth="150.0" promptText="Article" />
       <Label fx:id="CustomerInfo" alignment="CENTER" layoutX="164.0" layoutY="129.0" prefHeight="17.0" prefWidth="539.0" text="CustomerInfo" />
       <ListView fx:id="customerListView" layoutX="164.0" layoutY="150.0" prefHeight="401.0" prefWidth="533.0" />
+      <Label alignment="CENTER" layoutX="355.0" layoutY="25.0" prefHeight="17.0" prefWidth="157.0" text="Seller Information" />
+      <Button fx:id="sellbutton" layoutX="57.0" layoutY="180.0" mnemonicParsing="false" onAction="#sellToCustomer" text="Sell" />
+      <Label fx:id="sellingsInformation" alignment="CENTER" layoutY="561.0" prefHeight="17.0" prefWidth="700.0" text="SellingsInformation" />
    </children>
 </AnchorPane>

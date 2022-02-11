@@ -1,7 +1,5 @@
 package application;
 
-
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -30,9 +29,11 @@ public class MainSheetController implements Initializable{
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo,CustomerInfo;
+	Label SellerInfo,CustomerInfo,sellingsInformation;
 	@FXML
 	ListView<Customer>customerListView;
+	@FXML
+	Button sellbutton;
 	
 	List <Customer> CustemerList = new ArrayList<>();
 	List <Seller> SellerList = new ArrayList<>();
@@ -45,6 +46,18 @@ public class MainSheetController implements Initializable{
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 //	ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
+	
+	@FXML
+	void sellToCustomer(ActionEvent event) {
+		try {
+			sellingsInformation.setText(selectArticle.getSelectionModel().getSelectedItem().toString()+" Sells to "+customerListView.getSelectionModel().getSelectedItem().toString());
+		} catch (Exception e) {
+			sellingsInformation.setText("ingen product eller kund vald");
+		}
+		
+		
+		
+	}
 	
 	@FXML
 	void Select(ActionEvent event) {
