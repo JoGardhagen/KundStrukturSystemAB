@@ -12,6 +12,8 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFro
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
+import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
+import com.gardhagen.joakim.kundStrukturSystemAB.products.FillPruductList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +28,7 @@ public class MainSheetController implements Initializable{
 	@FXML
 	ComboBox<Seller> selectSeller;
 	@FXML
-	ComboBox<Customer> selectCustomer;
+	ComboBox<Article> selectArticle;
 	@FXML
 	Label SellerInfo,CustomerInfo;
 	@FXML
@@ -34,12 +36,15 @@ public class MainSheetController implements Initializable{
 	
 	List <Customer> CustemerList = new ArrayList<>();
 	List <Seller> SellerList = new ArrayList<>();
+	List <Article> PruductList = new ArrayList<>();
 	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
+	FillPruductList FPL = new FillPruductList(PruductList);
 //	FillCustomerFromFile FCFF = new FillCustomerFromFile(SellerList);
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
 	FillSellersCostumerList FSCL=new FillSellersCostumerList(SellerList,CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 //	ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
 	
 	@FXML
 	void Select(ActionEvent event) {
@@ -54,6 +59,7 @@ public class MainSheetController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		selectSeller.setItems(sellers);// Populerar försäljare till ComboBox för Försäljare
+		selectArticle.setItems(pruducts);
 				
 	}
 	

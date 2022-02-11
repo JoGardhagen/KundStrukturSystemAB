@@ -11,7 +11,7 @@
       <Separator layoutY="105.0" prefHeight="20.0" prefWidth="700.0" />
       <Label fx:id="SellerInfo" alignment="CENTER" layoutX="162.0" layoutY="46.0" prefHeight="17.0" prefWidth="539.0" text="SellerInfo" />
       <ComboBox fx:id="selectSeller" layoutX="8.0" layoutY="51.0" onAction="#Select" prefWidth="150.0" promptText="Seller" />
-      <ComboBox fx:id="selectCustomer" layoutX="8.0" layoutY="125.0" prefWidth="150.0" promptText="Customer" />
+      <ComboBox fx:id="selectArticle" layoutX="8.0" layoutY="125.0" prefWidth="150.0" promptText="Article" />
       <Label fx:id="CustomerInfo" alignment="CENTER" layoutX="164.0" layoutY="129.0" prefHeight="17.0" prefWidth="539.0" text="CustomerInfo" />
       <ListView fx:id="customerListView" layoutX="164.0" layoutY="150.0" prefHeight="401.0" prefWidth="533.0" />
    </children>
