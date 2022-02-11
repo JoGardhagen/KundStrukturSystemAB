@@ -40,11 +40,11 @@ public class MainSheetController implements Initializable{
 	List <Article> PruductList = new ArrayList<>();
 	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
 	FillPruductList FPL = new FillPruductList(PruductList);
-//	FillCustomerFromFile FCFF = new FillCustomerFromFile(SellerList);
+
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
 	FillSellersCostumerList FSCL=new FillSellersCostumerList(SellerList,CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
-//	ObservableList<Customer> customers = FXCollections.observableArrayList(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+
 	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
 	
 	@FXML
@@ -54,8 +54,6 @@ public class MainSheetController implements Initializable{
 		} catch (Exception e) {
 			sellingsInformation.setText("ingen product eller kund vald");
 		}
-		
-		
 		
 	}
 	
