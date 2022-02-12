@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.CustomersBuyings;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.ActivityStage;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
@@ -36,7 +37,7 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
-	Button sellbutton,activityListButton;
+	Button sellbutton, activityListButton, customerBuyings;
 	@FXML
 	TextField units;
 
@@ -57,13 +58,15 @@ public class MainSheetController implements Initializable {
 		try {
 			UnitsIntHandler.getIntFromTextField(units);
 			try {
-				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) +" " 
-							+ selectArticle.getSelectionModel().getSelectedItem().toString()
-							+ " Sells to " + customerListView.getSelectionModel().getSelectedItem().toString()
-							+ " for :"+selectArticle.getSelectionModel().getSelectedItem().
-								price*UnitsIntHandler.getIntFromTextField(units)+" SEK:-");
+				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) + " "
+						+ selectArticle.getSelectionModel().getSelectedItem().toString() + " Sells to "
+						+ customerListView.getSelectionModel().getSelectedItem().toString() + " for :"
+						+ selectArticle.getSelectionModel().getSelectedItem().price
+								* UnitsIntHandler.getIntFromTextField(units)
+						+ " SEK:-");
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
-				customerListView.getSelectionModel().getSelectedItem().bought.add(selectArticle.toString());
+				customerListView.getSelectionModel().getSelectedItem()
+					.bought.add(selectArticle.getSelectionModel().getSelectedItem().toString());
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -89,17 +92,25 @@ public class MainSheetController implements Initializable {
 		selectArticle.setItems(pruducts);
 
 	}
+
 	@FXML
 	void printActivityList() {
 
-		try {// Öppnar ett popup med aktivitetsLista 
+		try {// Öppnar ett popup med aktivitetsLista
 			new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
 			SellerInfo.setText("No Staff Member Chosen");
 		}
-		
-		
-		
+
+	}
+	@FXML
+	void printCustomersBuyings() {
+		try {
+			new CustomersBuyings(customerListView.getSelectionModel().getSelectedItem());
+			CustomerInfo.setText("CustomerInfo");
+		} catch (Exception e) {
+			CustomerInfo.setText("No Customer Chosen");
+		}
 	}
 
 }
