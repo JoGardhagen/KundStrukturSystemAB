@@ -112,7 +112,7 @@ public class MainSheetController implements Initializable {
 	}
 	@FXML
 	void printCustomersBuyings() {
-		try {
+		try {// Öppnar ett popup med Lista som visar vad kunden köpt
 			new CustomersBuyings(customerListView.getSelectionModel().getSelectedItem());
 			CustomerInfo.setText("CustomerInfo");
 		} catch (Exception e) {
@@ -121,7 +121,7 @@ public class MainSheetController implements Initializable {
 	}
 	@FXML
 	void articleStatistics() {
-		try {
+		try {// Öppnar ett popup med List som visar var varan sålts
 			new ArticleStatistics(selectArticle.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
 			sellingsInformation.setText("No Article Chosen");
