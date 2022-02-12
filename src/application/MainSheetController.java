@@ -66,7 +66,7 @@ public class MainSheetController implements Initializable {
 						+ " SEK:-");
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
 				customerListView.getSelectionModel().getSelectedItem()
-					.bought.add(selectArticle.getSelectionModel().getSelectedItem().toString());
+					.bought.add(selectArticle.getSelectionModel().getSelectedItem().toString());// ändra så att pris blir rätt
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
