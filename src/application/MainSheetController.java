@@ -13,6 +13,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFil
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
+import com.gardhagen.joakim.kundStrukturSystemAB.products.ArticleStatistics;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.FillPruductList;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.UnitsIntHandler;
 
@@ -37,7 +38,7 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
-	Button sellbutton, activityListButton, customerBuyings;
+	Button sellbutton, activityListButton, customerBuyings,articleStatistics;
 	@FXML
 	TextField units;
 
@@ -71,6 +72,8 @@ public class MainSheetController implements Initializable {
 							+" Paid :" +selectArticle.getSelectionModel().getSelectedItem().price
 							* UnitsIntHandler.getIntFromTextField(units)
 							+ " SEK:-");
+				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
+					System.out.println("Added item");
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -114,6 +117,14 @@ public class MainSheetController implements Initializable {
 			CustomerInfo.setText("CustomerInfo");
 		} catch (Exception e) {
 			CustomerInfo.setText("No Customer Chosen");
+		}
+	}
+	@FXML
+	void articleStatistics() {
+		try {
+			new ArticleStatistics(selectArticle.getSelectionModel().getSelectedItem());
+		} catch (Exception e) {
+			sellingsInformation.setText("No Article Chosen");
 		}
 	}
 
