@@ -61,7 +61,7 @@ public class MainSheetController implements Initializable {
 			try {
 				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) + " "
 						+ selectArticle.getSelectionModel().getSelectedItem().toString() + " Sells to "
-						+ customerListView.getSelectionModel().getSelectedItem().toString() + " for :"
+						+ customerListView.getSelectionModel().getSelectedItem().toString() + " for : "
 						+ selectArticle.getSelectionModel().getSelectedItem().price
 								* UnitsIntHandler.getIntFromTextField(units)
 						+ " SEK:-");
@@ -69,11 +69,10 @@ public class MainSheetController implements Initializable {
 				customerListView.getSelectionModel().getSelectedItem()
 					.bought.add(UnitsIntHandler.getIntFromTextField(units) 
 							+ selectArticle.getSelectionModel().getSelectedItem().toString()
-							+" Paid :" +selectArticle.getSelectionModel().getSelectedItem().price
+							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
 							* UnitsIntHandler.getIntFromTextField(units)
 							+ " SEK:-");
 				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
-					System.out.println("Added item");
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -84,10 +83,9 @@ public class MainSheetController implements Initializable {
 	}
 
 	@FXML
-	void Select(ActionEvent event) {
+	void Select(ActionEvent event) {// styr combobox valen för Försäljare
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
 		SellerInfo.setText(s);
-//		System.out.println(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 		customerListView.getItems().clear();
 		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	}

@@ -19,9 +19,13 @@ public class ArticleStatistics {
 	}
 
 	private void addArticlesForToListview(Article article, ListView<String> listview) {
+		int total = 0;
 		for(String s:article.sold) {
 			listview.getItems().add(s);
+			String split[] = s.split(" ");
+			String value = split[0];
+			total +=Integer.parseInt(value);
 		}
-		
+		listview.getItems().add("Total sold = "+ total);
 	}
 }

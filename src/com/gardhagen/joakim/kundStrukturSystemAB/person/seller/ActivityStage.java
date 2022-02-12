@@ -19,10 +19,17 @@ public class ActivityStage {
 		activityStage.show();
 	}
 	void addSellerList(Seller seller,ListView<String> listview) {
+		int total = 0;
+		float ernings = 0f;
 		for(String s : seller.activityList) {
 			listview.getItems().add(s);
+			String split[] = s.split(" ");
+			String value = split[0];
+			String saldo = split[16];
+			ernings +=Float.parseFloat(saldo);
+			total +=Integer.parseInt(value);
 		}
-		
+		listview.getItems().add("Total sold = "+ total +" Items"+" Earn "+ ernings);
 	}
 	
 }

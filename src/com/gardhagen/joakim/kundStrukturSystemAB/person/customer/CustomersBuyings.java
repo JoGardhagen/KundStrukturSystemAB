@@ -19,8 +19,14 @@ public class CustomersBuyings {
 		customerBuyings.show();
 	}
 	void addCustomersBuyingList(Customer customer,ListView<String> listview) {
+		int total = 0;
 		for(String s : customer.bought) {
 			listview.getItems().add(s);
+			String split[] = s.split(" ");
+			String value = split[0];
+			total +=Integer.parseInt(value);
 		}
-	}
+		listview.getItems().add("Total bought = "+ total +" items");
+		}
+	
 }
