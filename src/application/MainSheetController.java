@@ -66,10 +66,11 @@ public class MainSheetController implements Initializable {
 						+ " SEK:-");
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
 				customerListView.getSelectionModel().getSelectedItem()
-					.bought.add(UnitsIntHandler.getIntFromTextField(units) + selectArticle.getSelectionModel().getSelectedItem().toString()+
-							" Paid :" +selectArticle.getSelectionModel().getSelectedItem().price
+					.bought.add(UnitsIntHandler.getIntFromTextField(units) 
+							+ selectArticle.getSelectionModel().getSelectedItem().toString()
+							+" Paid :" +selectArticle.getSelectionModel().getSelectedItem().price
 							* UnitsIntHandler.getIntFromTextField(units)
-					+ " SEK:-");// ändra så att pris blir rätt
+							+ " SEK:-");
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -83,7 +84,7 @@ public class MainSheetController implements Initializable {
 	void Select(ActionEvent event) {
 		String s = selectSeller.getSelectionModel().getSelectedItem().toString();
 		SellerInfo.setText(s);
-		System.out.println(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+//		System.out.println(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 		customerListView.getItems().clear();
 		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
 	}
