@@ -17,6 +17,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.ArticleStatistics;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.FillPruductList;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.UnitsIntHandler;
+import com.gardhagen.joakim.kundStrukturSystemAB.timeStamp.TimeStamp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,7 +49,7 @@ public class MainSheetController implements Initializable {
 	List<Article> PruductList = new ArrayList<>();
 	FillSellerFromFile FSFF = new FillSellerFromFile(SellerList);
 	FillPruductList FPL = new FillPruductList(PruductList);
-
+	TimeStamp timeStamp = new TimeStamp();
 	FillCustomerFromFile FCFF = new FillCustomerFromFile(CustemerList);
 	FillSellersCostumerList FSCL = new FillSellersCostumerList(SellerList, CustemerList);
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
@@ -58,6 +59,7 @@ public class MainSheetController implements Initializable {
 
 	@FXML
 	void sellToCustomer(ActionEvent event) {
+		String date = timeStamp.toString();
 		try {
 			commonCustomerLable.setText(" ");
 			UnitsIntHandler.getIntFromTextField(units);
@@ -67,8 +69,8 @@ public class MainSheetController implements Initializable {
 						+ customerListView.getSelectionModel().getSelectedItem().toString() + " for : "
 						+ selectArticle.getSelectionModel().getSelectedItem().price
 								* UnitsIntHandler.getIntFromTextField(units)
-						+ " SEK:-");
-				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
+						+ " SEK:- " +date.toString());
+				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText()+date.toString());
 				for(Seller seller : sellers) {
 					for(Customer customer : seller.sellersCustomerList) {
 						if(customer.equals(customerListView.getSelectionModel().getSelectedItem())) {
@@ -89,7 +91,7 @@ public class MainSheetController implements Initializable {
 							+ selectArticle.getSelectionModel().getSelectedItem().toString()
 							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
 							* UnitsIntHandler.getIntFromTextField(units)
-							+ " SEK:-");
+							+ " SEK:- " +date.toString());
 				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
 				
 			} catch (Exception e) {
