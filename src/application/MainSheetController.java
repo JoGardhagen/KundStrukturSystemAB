@@ -9,7 +9,6 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.CustomersBuyings;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.ActivityStage;
-import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.CommonCustomerControll;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
@@ -36,11 +35,11 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo, CustomerInfo, sellingsInformation,commonCustomerLable;
+	Label SellerInfo, CustomerInfo, sellingsInformation,commonCustomerLable,target,targetCustomer,targetArticle;
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
-	Button sellbutton, activityListButton, customerBuyings,articleStatistics;
+	Button sellbutton, activityListButton, customerBuyings,articleStatistics,sellings,customerSellings,articleSelling;
 	@FXML
 	TextField units;
 
@@ -59,8 +58,10 @@ public class MainSheetController implements Initializable {
 
 	@FXML
 	void sellToCustomer(ActionEvent event) {
+		TimeStamp timeStamp = new TimeStamp();
 		String date = timeStamp.toString();
 		try {
+//			targetCustomer.setText(customerListView.getSelectionModel().getSelectedItem());
 			commonCustomerLable.setText(" ");
 			UnitsIntHandler.getIntFromTextField(units);
 			try {
@@ -86,6 +87,7 @@ public class MainSheetController implements Initializable {
 							
 					}
 				}
+				
 				customerListView.getSelectionModel().getSelectedItem()
 							.bought.add(UnitsIntHandler.getIntFromTextField(units) 
 							+ selectArticle.getSelectionModel().getSelectedItem().toString()
@@ -109,6 +111,7 @@ public class MainSheetController implements Initializable {
 		SellerInfo.setText(s);
 		customerListView.getItems().clear();
 		customerListView.getItems().addAll(selectSeller.getSelectionModel().getSelectedItem().sellersCustomerList);
+		target.setText(s);
 	}
 
 	@Override
@@ -131,6 +134,7 @@ public class MainSheetController implements Initializable {
 	}
 	@FXML
 	void printCustomersBuyings() {
+		
 		try {// Öppnar ett popup med Lista som visar vad kunden köpt
 			new CustomersBuyings(customerListView.getSelectionModel().getSelectedItem());
 			CustomerInfo.setText("CustomerInfo");
@@ -144,6 +148,33 @@ public class MainSheetController implements Initializable {
 			new ArticleStatistics(selectArticle.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
 			sellingsInformation.setText("No Article Chosen");
+		}
+	}
+	@FXML
+	void showSellings() {
+		try {
+			new SellingsOverTime(selectSeller.getSelectionModel().getSelectedItem());
+		} catch (Exception e) {
+			target.setText("No Seller Chosen");
+		}
+	}
+	@FXML
+	void showCostumerSellings() {
+		try {
+			targetCustomer.setText("Target Customer");
+			new SellingsOverTime(customerListView.getSelectionModel().getSelectedItem());
+		} catch (Exception e) {
+			targetCustomer.setText("No Customer Chosen");
+		}
+	}
+	
+	@FXML
+	void showArticleSellings() {
+		try {
+			targetArticle.setText("Target Article");
+			new SellingsOverTime(selectArticle.getSelectionModel().getSelectedItem());
+		} catch (Exception e) {
+			targetArticle.setText("No Article Chosen");
 		}
 	}
 
