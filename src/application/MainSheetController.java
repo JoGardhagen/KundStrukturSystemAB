@@ -90,7 +90,8 @@ public class MainSheetController implements Initializable {
 	void printActivityList() {
 //		selectSeller.getSelectionModel().getSelectedItem().activityList();
 		selectSeller.getSelectionModel().getSelectedItem().printActivityList();
-			
+		ActivityStage activityList = new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
+		
 		
 	}
 
