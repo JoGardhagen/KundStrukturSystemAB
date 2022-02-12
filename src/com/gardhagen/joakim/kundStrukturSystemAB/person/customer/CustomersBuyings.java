@@ -20,13 +20,16 @@ public class CustomersBuyings {
 	}
 	void addCustomersBuyingList(Customer customer,ListView<String> listview) {
 		int total = 0;
+		float spent = 0f;
 		for(String s : customer.bought) {
 			listview.getItems().add(s);
 			String split[] = s.split(" ");
 			String value = split[0];
+			String saldo = split[8];
+			spent +=Float.parseFloat(saldo);
 			total +=Integer.parseInt(value);
 		}
-		listview.getItems().add("Total bought = "+ total +" items");
+		listview.getItems().add("Total bought = "+ total +" items" +" for subtotal of " +spent);
 		}
 	
 }
