@@ -1,5 +1,6 @@
 package application;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,9 +89,13 @@ public class MainSheetController implements Initializable {
 	}
 	@FXML
 	void printActivityList() {
-//		selectSeller.getSelectionModel().getSelectedItem().activityList();
-		selectSeller.getSelectionModel().getSelectedItem().printActivityList();
-		ActivityStage activityList = new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
+
+		try {// Öppnar ett popup med aktivitetsLista 
+			new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
+		} catch (Exception e) {
+			SellerInfo.setText("No Staff Member Chosen");
+		}
+		
 		
 		
 	}
