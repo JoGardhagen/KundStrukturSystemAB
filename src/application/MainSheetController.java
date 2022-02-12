@@ -1,6 +1,5 @@
 package application;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +7,13 @@ import java.util.ResourceBundle;
 
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.ActivityStage;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.FillPruductList;
+import com.gardhagen.joakim.kundStrukturSystemAB.products.UnitsIntHandler;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,6 +63,7 @@ public class MainSheetController implements Initializable {
 							+ " for :"+selectArticle.getSelectionModel().getSelectedItem().
 								price*UnitsIntHandler.getIntFromTextField(units)+" SEK:-");
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
+				customerListView.getSelectionModel().getSelectedItem().bought.add(selectArticle.toString());
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}

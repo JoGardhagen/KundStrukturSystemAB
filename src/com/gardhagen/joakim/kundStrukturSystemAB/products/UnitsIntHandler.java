@@ -1,4 +1,4 @@
-package application;
+package com.gardhagen.joakim.kundStrukturSystemAB.products;
 
 import javafx.scene.control.TextField;
 // hanler for Prase Int from textfield 

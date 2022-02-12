@@ -1,6 +1,4 @@
-package application;
-
-import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
+package com.gardhagen.joakim.kundStrukturSystemAB.person.seller;
 
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
