@@ -19,6 +19,8 @@ public class FillSellerFromFile {
 				String adress = adresspart1 +" "+ adresspart2;
 				
 				Seller seller = new Seller(0, fName, lName, adress );
+				CommonCustomerControll commonCustomerControll = new CommonCustomerControll();
+				seller.addPropertyChangeListener(commonCustomerControll);
 				sellerList.add(seller);
 				
 			}

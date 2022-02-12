@@ -9,6 +9,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.CustomersBuyings;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.ActivityStage;
+import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.CommonCustomerControll;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellerFromFile;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.FillSellersCostumerList;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
@@ -34,7 +35,7 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo, CustomerInfo, sellingsInformation;
+	Label SellerInfo, CustomerInfo, sellingsInformation,commonCustomerLable;
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
@@ -53,10 +54,12 @@ public class MainSheetController implements Initializable {
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 
 	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
+	
 
 	@FXML
 	void sellToCustomer(ActionEvent event) {
 		try {
+			commonCustomerLable.setText(" ");
 			UnitsIntHandler.getIntFromTextField(units);
 			try {
 				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) + " "
@@ -66,13 +69,29 @@ public class MainSheetController implements Initializable {
 								* UnitsIntHandler.getIntFromTextField(units)
 						+ " SEK:-");
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
+				for(Seller seller : sellers) {
+					for(Customer customer : seller.sellersCustomerList) {
+						if(customer.equals(customerListView.getSelectionModel().getSelectedItem())) {
+							seller.setCommonCustomer(true); 
+							commonCustomerLable.setText(customerListView.getSelectionModel().getSelectedItem().toString()
+									+"is Common Customer with Seller " +seller.getForName().toString() 
+									+ " "+ seller.getLastName().toString());
+							System.out.println("noted");
+						}
+//						else {
+//							commonCustomerLable.setText(null);
+//						}
+							
+					}
+				}
 				customerListView.getSelectionModel().getSelectedItem()
-					.bought.add(UnitsIntHandler.getIntFromTextField(units) 
+							.bought.add(UnitsIntHandler.getIntFromTextField(units) 
 							+ selectArticle.getSelectionModel().getSelectedItem().toString()
 							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
 							* UnitsIntHandler.getIntFromTextField(units)
 							+ " SEK:-");
 				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
+				
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}

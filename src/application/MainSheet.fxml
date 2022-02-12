@@ -24,5 +24,6 @@
       <Button fx:id="activityListButton" layoutX="41.0" layoutY="80.0" mnemonicParsing="false" onAction="#printActivityList" prefHeight="25.0" prefWidth="92.0" text="Activity List" />
       <Button fx:id="customerBuyings" layoutX="567.0" layoutY="120.0" mnemonicParsing="false" onAction="#printCustomersBuyings" prefHeight="25.0" prefWidth="130.0" text="Customers Buyings" />
       <Button fx:id="articleStatistics" layoutX="166.0" layoutY="120.0" mnemonicParsing="false" onAction="#articleStatistics" text="Article Statistics" />
+      <Label fx:id="commonCustomerLable" alignment="CENTER" layoutX="160.0" layoutY="72.0" prefHeight="17.0" prefWidth="539.0" />
    </children>
 </AnchorPane>
