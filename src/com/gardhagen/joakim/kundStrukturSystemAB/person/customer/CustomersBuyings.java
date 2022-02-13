@@ -12,7 +12,7 @@ public class CustomersBuyings {
 		customerBuyings.setTitle(customer.getForName()+ " "+ customer.getLastName() + " has bought :");
 		StackPane layout = new StackPane();
 		ListView<String> listview = new ListView<>();
-		addCustomersBuyingList(customer, listview);
+		addCustomersBuyingList(customer, listview);// Populerar Listan som visas på skärmen 
 		layout.getChildren().add(listview);
 		Scene scene = new Scene(layout,600,400);
 		customerBuyings.setScene(scene);

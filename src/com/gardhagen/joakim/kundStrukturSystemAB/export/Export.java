@@ -2,10 +2,10 @@ package com.gardhagen.joakim.kundStrukturSystemAB.export;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+// Singelton Mönster
 public class Export {
 	private static Export export = null;
-	private final String exportFile = "export_CRM-Demo.txt";
+	private final String exportFile = "export_CRM-Demo.txt";// den här filen skapas när man klickar på exportData Knappen
 	private PrintWriter writer;
 	
 	private Export() {
@@ -18,7 +18,7 @@ public class Export {
 		
 	}
 	public void printExport(String string) {
-		writer.println(string);
+		writer.println(string);// skriver sträng till Fil
 	}
 	public static Export getInstance() {
 		if(export ==null)

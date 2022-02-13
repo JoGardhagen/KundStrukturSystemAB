@@ -1,9 +1,6 @@
 package com.gardhagen.joakim.kundStrukturSystemAB.sellingsOverTime;
 
-import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.seller.Seller;
-import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
-
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;

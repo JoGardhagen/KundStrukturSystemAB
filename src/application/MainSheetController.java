@@ -37,7 +37,8 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo, CustomerInfo, sellingsInformation, commonCustomerLable, target, targetCustomer, targetArticle,exportTarget;
+	Label SellerInfo, CustomerInfo, sellingsInformation, commonCustomerLable, target, targetCustomer, targetArticle,
+			exportTarget;
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
@@ -111,7 +112,7 @@ public class MainSheetController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		selectSeller.setItems(sellers);// Populerar försäljare till ComboBox för Försäljare
-		selectArticle.setItems(pruducts);
+		selectArticle.setItems(pruducts);// Populerar producter till Artikel Comboboxen
 
 	}
 
@@ -147,7 +148,7 @@ public class MainSheetController implements Initializable {
 	}
 
 	@FXML
-	void showSellings() {// graf popup 
+	void showSellings() {// graf popup
 		try {
 			new SellingsOverTime(selectSeller.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
@@ -161,17 +162,13 @@ public class MainSheetController implements Initializable {
 			Export export = Export.getInstance();// tillhör singelton mönster är loggfil som uppdateras
 			for (String s : selectSeller.getSelectionModel().getSelectedItem().activityList) {
 				try {
-
 					export.printExport(s);
-
-				} catch (Exception e) {
-					
-				}
+				} catch (Exception e) {}
 			}
 		} catch (Exception e) {
 			exportTarget.setText("No Seller Chosen");
 		}
-		
+
 	}
 
 }

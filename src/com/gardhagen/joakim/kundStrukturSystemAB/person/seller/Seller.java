@@ -35,16 +35,5 @@ public class Seller extends Person {
 	public void addToSellerCustomerList(Customer customer) {
 		sellersCustomerList.add(customer);
 	}
-//	public void printActivityList() {
-//		System.out.println( this.forName +" "+this.lastName +"\n");
-//		for(String activty:activityList) {
-//			System.out.println(activty);
-//		}
-//	}
-////	public void noteUpdate() { 
-//		activityList.as
-//	}
-//	
-
 
 }

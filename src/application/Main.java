@@ -15,7 +15,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,700,585);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
+			primaryStage.setResizable(false);// gör att användaren inte kan ändra storleken på Applikations Fönstret
 			primaryStage.setTitle("CRM-Demo");
 			primaryStage.show();
 		} catch(Exception e) {
