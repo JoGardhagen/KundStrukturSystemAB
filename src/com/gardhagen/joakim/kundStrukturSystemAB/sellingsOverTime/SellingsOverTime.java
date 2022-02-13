@@ -16,18 +16,15 @@ public class SellingsOverTime {
 	NumberAxis yAxis = new NumberAxis();
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	LineChart lineChart = new LineChart(xAxis,yAxis);
+	
 	public SellingsOverTime(Seller seller) {
 		Stage sellings = new Stage();
 		sellings.setTitle("Sellings : " + seller.getForName() +" "+ seller.getLastName());
 		StackPane layout = new StackPane();
-		
-		
 		xAxis.setLabel("Seller :"+seller.toString());
-		
-		
 		yAxis.setLabel("Earning ");
 		
-		
+		CollectDataSeries dataSeries = new CollectDataSeries(seller.activityList);
 		
 		layout.getChildren().add(lineChart);
 		
@@ -39,12 +36,9 @@ public class SellingsOverTime {
 		Stage sellings = new Stage();
 		sellings.setTitle("Sellings : "+article.pruductName+ " ");
 		StackPane layout = new StackPane();
-		
-		
 		xAxis.setLabel("Seller :"+article.toString());
-		
-		
 		yAxis.setLabel("units sold");
+		
 		
 		
 		
@@ -58,11 +52,7 @@ public class SellingsOverTime {
 		Stage sellings = new Stage();
 		sellings.setTitle(" Buyings From : "+customer.getForName() +" "+customer.getLastName()+" "+customer.getAdress());
 		StackPane layout = new StackPane();
-
-		
 		xAxis.setLabel("Customer :"+customer.toString());
-		
-		
 		yAxis.setLabel("units bougt");
 		
 		

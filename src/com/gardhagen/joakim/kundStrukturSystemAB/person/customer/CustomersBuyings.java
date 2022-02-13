@@ -25,7 +25,7 @@ public class CustomersBuyings {
 			listview.getItems().add(s);
 			String split[] = s.split(" ");
 			String value = split[0];
-			String saldo = split[8];
+			String saldo = split[16];
 			spent +=Float.parseFloat(saldo);
 			total +=Integer.parseInt(value);
 		}

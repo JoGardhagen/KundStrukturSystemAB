@@ -72,7 +72,7 @@ public class MainSheetController implements Initializable {
 						+ selectArticle.getSelectionModel().getSelectedItem().price
 								* UnitsIntHandler.getIntFromTextField(units)
 						+ " SEK:- " +date.toString());
-				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText()+date.toString());
+				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
 				for(Seller seller : sellers) {
 					for(Customer customer : seller.sellersCustomerList) {
 						if(customer.equals(customerListView.getSelectionModel().getSelectedItem())) {
@@ -88,13 +88,13 @@ public class MainSheetController implements Initializable {
 							
 					}
 				}
-				
-				customerListView.getSelectionModel().getSelectedItem()
-							.bought.add(UnitsIntHandler.getIntFromTextField(units) 
-							+ selectArticle.getSelectionModel().getSelectedItem().toString()
-							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
-							* UnitsIntHandler.getIntFromTextField(units)
-							+ " SEK:- " +date.toString());
+				customerListView.getSelectionModel().getSelectedItem().bought.add(sellingsInformation.getText());
+//				customerListView.getSelectionModel().getSelectedItem()
+//							.bought.add(UnitsIntHandler.getIntFromTextField(units) 
+//							+ selectArticle.getSelectionModel().getSelectedItem().toString()
+//							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
+//							* UnitsIntHandler.getIntFromTextField(units)
+//							+ " SEK:- " +date.toString());
 				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
 				
 			} catch (Exception e) {
