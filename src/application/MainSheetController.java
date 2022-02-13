@@ -16,6 +16,7 @@ import com.gardhagen.joakim.kundStrukturSystemAB.products.Article;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.ArticleStatistics;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.FillPruductList;
 import com.gardhagen.joakim.kundStrukturSystemAB.products.UnitsIntHandler;
+import com.gardhagen.joakim.kundStrukturSystemAB.sellingsOverTime.SellingsOverTime;
 import com.gardhagen.joakim.kundStrukturSystemAB.timeStamp.TimeStamp;
 
 import javafx.collections.FXCollections;
