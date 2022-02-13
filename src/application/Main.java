@@ -5,7 +5,12 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
-
+/*CRM demo 
+ * kunder , säljare och produter laddas in från textFiler.
+ * många buggar existerar i programmet. . . 
+ * grafer o Listor finns med.
+ * Exporterings till en fil. 
+ * */
 
 public class Main extends Application {
 	@Override
