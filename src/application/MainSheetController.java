@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.gardhagen.joakim.kundStrukturSystemAB.export.Export;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.Customer;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.CustomersBuyings;
 import com.gardhagen.joakim.kundStrukturSystemAB.person.customer.FillCustomerFromFile;
@@ -36,11 +37,11 @@ public class MainSheetController implements Initializable {
 	@FXML
 	ComboBox<Article> selectArticle;
 	@FXML
-	Label SellerInfo, CustomerInfo, sellingsInformation,commonCustomerLable,target,targetCustomer,targetArticle;
+	Label SellerInfo, CustomerInfo, sellingsInformation, commonCustomerLable, target, targetCustomer, targetArticle,exportTarget;
 	@FXML
 	ListView<Customer> customerListView;
 	@FXML
-	Button sellbutton, activityListButton, customerBuyings,articleStatistics,sellings,customerSellings,articleSelling;
+	Button sellbutton, activityListButton, customerBuyings, articleStatistics, sellings, exportData;
 	@FXML
 	TextField units;
 
@@ -55,48 +56,39 @@ public class MainSheetController implements Initializable {
 	ObservableList<Seller> sellers = FXCollections.observableArrayList(SellerList);
 
 	ObservableList<Article> pruducts = FXCollections.observableArrayList(PruductList);
-	
 
 	@FXML
 	void sellToCustomer(ActionEvent event) {
 		TimeStamp timeStamp = new TimeStamp();
 		String date = timeStamp.toString();
 		try {
-//			targetCustomer.setText(customerListView.getSelectionModel().getSelectedItem());
 			commonCustomerLable.setText(" ");
 			UnitsIntHandler.getIntFromTextField(units);
 			try {
-				sellingsInformation.setText(UnitsIntHandler.getIntFromTextField(units) + " "
-						+ selectArticle.getSelectionModel().getSelectedItem().toString() + " Sells to "
-						+ customerListView.getSelectionModel().getSelectedItem().toString() + " for : "
-						+ selectArticle.getSelectionModel().getSelectedItem().price
-								* UnitsIntHandler.getIntFromTextField(units)
-						+ " SEK:- " +date.toString());
+				sellingsInformation
+						.setText(
+								UnitsIntHandler.getIntFromTextField(units) + " "
+										+ selectArticle.getSelectionModel().getSelectedItem().toString() + " Sells to "
+										+ customerListView.getSelectionModel().getSelectedItem().toString() + " for : "
+										+ selectArticle.getSelectionModel().getSelectedItem().price
+												* UnitsIntHandler.getIntFromTextField(units)
+										+ " SEK:- " + date.toString());
 				selectSeller.getSelectionModel().getSelectedItem().activityList.add(sellingsInformation.getText());
-				for(Seller seller : sellers) {
-					for(Customer customer : seller.sellersCustomerList) {
-						if(customer.equals(customerListView.getSelectionModel().getSelectedItem())) {
-							seller.setCommonCustomer(true); 
-							commonCustomerLable.setText(customerListView.getSelectionModel().getSelectedItem().toString()
-									+"is Common Customer with Seller " +seller.getForName().toString() 
-									+ " "+ seller.getLastName().toString());
+				for (Seller seller : sellers) {
+					for (Customer customer : seller.sellersCustomerList) {
+						if (customer.equals(customerListView.getSelectionModel().getSelectedItem())) {
+							seller.setCommonCustomer(true);
+							commonCustomerLable
+									.setText(customerListView.getSelectionModel().getSelectedItem().toString()
+											+ "is Common Customer with Seller " + seller.getForName().toString() + " "
+											+ seller.getLastName().toString());
 							System.out.println("noted");
 						}
-//						else {
-//							commonCustomerLable.setText(null);
-//						}
-							
 					}
 				}
 				customerListView.getSelectionModel().getSelectedItem().bought.add(sellingsInformation.getText());
-//				customerListView.getSelectionModel().getSelectedItem()
-//							.bought.add(UnitsIntHandler.getIntFromTextField(units) 
-//							+ selectArticle.getSelectionModel().getSelectedItem().toString()
-//							+" Paid : " +selectArticle.getSelectionModel().getSelectedItem().price
-//							* UnitsIntHandler.getIntFromTextField(units)
-//							+ " SEK:- " +date.toString());
 				selectArticle.getSelectionModel().getSelectedItem().sold.add(sellingsInformation.getText());
-				
+
 			} catch (Exception e) {
 				sellingsInformation.setText("Not Product or Customer is Chosen");
 			}
@@ -125,7 +117,7 @@ public class MainSheetController implements Initializable {
 
 	@FXML
 	void printActivityList() {
-		
+
 		try {// Öppnar ett popup med aktivitetsLista
 			new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
@@ -133,9 +125,10 @@ public class MainSheetController implements Initializable {
 		}
 
 	}
+
 	@FXML
 	void printCustomersBuyings() {
-		
+
 		try {// Öppnar ett popup med Lista som visar vad kunden köpt
 			new CustomersBuyings(customerListView.getSelectionModel().getSelectedItem());
 			CustomerInfo.setText("CustomerInfo");
@@ -143,6 +136,7 @@ public class MainSheetController implements Initializable {
 			CustomerInfo.setText("No Customer Chosen");
 		}
 	}
+
 	@FXML
 	void articleStatistics() {
 		try {// Öppnar ett popup med List som visar var varan sålts
@@ -151,32 +145,33 @@ public class MainSheetController implements Initializable {
 			sellingsInformation.setText("No Article Chosen");
 		}
 	}
+
 	@FXML
-	void showSellings() {
+	void showSellings() {// graf popup 
 		try {
 			new SellingsOverTime(selectSeller.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
 			target.setText("No Seller Chosen");
 		}
 	}
+
 	@FXML
-	void showCostumerSellings() {
+	void exportDataHandler() {
 		try {
-			targetCustomer.setText("Target Customer");
-			new SellingsOverTime(customerListView.getSelectionModel().getSelectedItem());
+			Export export = Export.getInstance();// tillhör singelton mönster är loggfil som uppdateras
+			for (String s : selectSeller.getSelectionModel().getSelectedItem().activityList) {
+				try {
+
+					export.printExport(s);
+
+				} catch (Exception e) {
+					
+				}
+			}
 		} catch (Exception e) {
-			targetCustomer.setText("No Customer Chosen");
+			exportTarget.setText("No Seller Chosen");
 		}
-	}
-	
-	@FXML
-	void showArticleSellings() {
-		try {
-			targetArticle.setText("Target Article");
-			new SellingsOverTime(selectArticle.getSelectionModel().getSelectedItem());
-		} catch (Exception e) {
-			targetArticle.setText("No Article Chosen");
-		}
+		
 	}
 
 }

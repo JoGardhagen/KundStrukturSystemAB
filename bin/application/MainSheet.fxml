@@ -27,9 +27,7 @@
       <Label fx:id="commonCustomerLable" alignment="CENTER" layoutX="160.0" layoutY="72.0" prefHeight="17.0" prefWidth="539.0" />
       <Button fx:id="sellings" layoutX="55.0" layoutY="280.0" mnemonicParsing="false" onAction="#showSellings" text="Sellings" />
       <Label fx:id="target" alignment="CENTER" layoutX="3.0" layoutY="257.0" prefHeight="17.0" prefWidth="157.0" text="Target" />
-      <Label fx:id="targetCustomer" alignment="CENTER" layoutX="9.0" layoutY="311.0" prefHeight="17.0" prefWidth="157.0" text="Target Customer" />
-      <Label fx:id="targetArticle" alignment="CENTER" layoutX="5.0" layoutY="367.0" prefHeight="17.0" prefWidth="157.0" text="Target Article" />
-      <Button fx:id="customerSellings" layoutX="55.0" layoutY="338.0" mnemonicParsing="false" onAction="#showCostumerSellings" text="Sellings" />
-      <Button fx:id="articleSelling" layoutX="56.0" layoutY="391.0" mnemonicParsing="false" onAction="#showArticleSellings" text="Sellings" />
+      <Button fx:id="exportData" layoutX="10.0" layoutY="491.0" mnemonicParsing="false" onAction="#exportDataHandler" prefHeight="25.0" prefWidth="142.0" text="Export Data" />
+      <Label fx:id="exportTarget" alignment="CENTER" layoutX="2.0" layoutY="466.0" prefHeight="17.0" prefWidth="157.0" text="Export" />
    </children>
 </AnchorPane>
