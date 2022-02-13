@@ -1,3 +1,3 @@
 # Systemutvecklare Java 
 ## Assaignment
-![CRMDemoTest] (CRMDemoTest.png)
+![CRMDemoTest] (https://github.com/JoGardhagen/KundStrukturSystemAB/blob/main/CRMDemoTest.png?raw=true)
