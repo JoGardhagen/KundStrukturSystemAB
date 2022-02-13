@@ -125,7 +125,7 @@ public class MainSheetController implements Initializable {
 
 	@FXML
 	void printActivityList() {
-
+		
 		try {// Öppnar ett popup med aktivitetsLista
 			new ActivityStage(selectSeller.getSelectionModel().getSelectedItem());
 		} catch (Exception e) {
